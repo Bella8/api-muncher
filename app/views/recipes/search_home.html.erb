@@ -1,0 +1,14 @@
+<form class="search">
+  <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+  <li class="has-form">
+    <div class="row collapse">
+      <div class="large-8 small-9 columns">
+        <%= text_field_tag :search, params[:search], placeholder: "Search Recipes" %>
+      </div>
+      <div class="large-4 small-3 columns">
+        <li><%= submit_tag "Search" %></li>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</form>

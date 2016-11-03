@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'recipes#search_home'
+  get '/recipes/:search' => 'recipes#search', as: 'recipes_search'
+  get '/recipes/*uri' => 'recipes#show', as: 'recipe'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
