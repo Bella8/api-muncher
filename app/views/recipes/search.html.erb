@@ -1,8 +1,12 @@
 <section>
-  <ul>
-  <% @data.map do |item| %>
-  <li><%= link_to image_tag(item.image), root_path %></li>
-  <li><%= item.label %></li>
-  <% end %>
-  </ul>
+  <div class="row small-up-2  medium-up-2 medium-centered large-up-4">
+    <% @data.map do |item| %>
+    <div class="column">
+      <ul>
+        <li><%= link_to image_tag(item.image), recipe_path(item.label) %></li>
+        <li><%= link_to item.label, recipe_path(item.label) %></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
 </section>

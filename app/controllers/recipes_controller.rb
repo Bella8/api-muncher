@@ -1,9 +1,9 @@
 class RecipesController < ApplicationController
 
-   def search_home
-     if params[:search] != nil
-     @name = params[:search]
-     redirect_to recipes_search_path(@name)
+  def search_home
+    if params[:search] != nil
+      @name = params[:search]
+      redirect_to recipes_search_path(@name)
     end
   end
 
@@ -12,7 +12,14 @@ class RecipesController < ApplicationController
     @data = Recipe.search(@search)
   end
 
+  def fetch
+    search.map do |item|
+      @uri = item["recipe"]["uri"]
+    end
+  end
+
   def show
-    @search = params[:uri]
+    @item = Recipe.fetch(params[:uri])
+    #  @item = fetch
   end
 end

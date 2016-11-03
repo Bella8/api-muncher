@@ -2,8 +2,9 @@ class Recipe
   attr_reader :label, :image, :uri, :ingredientLines, :totalNutrients, :url
 
   # def initialize(label, options = {} )
-  def initialize(recipe_hash)
+  def initialize( recipe_hash)
     # Soure_key, URI, label
+    @uri = uri
     @label = recipe_hash[:label]
     @image = recipe_hash[:image]
     @uri = recipe_hash[:uri]
@@ -18,10 +19,15 @@ class Recipe
     RecipeApiWrapper.listrecipes(@search)
   end
 
-  def self.search_url(url)
-    @uri = url
-    RecipeApiWrapper.listrecipes(@uri)
-  end
+  # def self.search_label(label)
+  #   # RecipeApiWrapper.listrecipes(@label)
+  #   Recipe.search(label)
+  # end
+
+
+  #   def self.url
+  #   recipe_url
+  #  end
   # # Foreget all memoized values
   # def self.reset
   # end
