@@ -12,14 +12,9 @@ class RecipesController < ApplicationController
     @data = Recipe.search(@search)
   end
 
-  def fetch
-    search.map do |item|
-      @uri = item["recipe"]["uri"]
-    end
-  end
-
   def show
-    @item = Recipe.fetch(params[:uri])
-    #  @item = fetch
+    @params = params[:uri]
+    @recipe = RecipeApiWrapper.get_recipe(@params)
+
   end
 end

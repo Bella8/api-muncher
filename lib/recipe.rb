@@ -4,7 +4,6 @@ class Recipe
   # def initialize(label, options = {} )
   def initialize( recipe_hash)
     # Soure_key, URI, label
-    @uri = uri
     @label = recipe_hash[:label]
     @image = recipe_hash[:image]
     @uri = recipe_hash[:uri]
@@ -13,44 +12,8 @@ class Recipe
     @original_recipe = recipe_hash[:url]
   end
 
-  # Return a memoized set of all channels
   def self.search(search)
     @search = search
     RecipeApiWrapper.listrecipes(@search)
   end
-
-  # def self.search_label(label)
-  #   # RecipeApiWrapper.listrecipes(@label)
-  #   Recipe.search(label)
-  # end
-
-
-  #   def self.url
-  #   recipe_url
-  #  end
-  # # Foreget all memoized values
-  # def self.reset
-  # end
-
-  # Return either the first (probably only) channel matching
-  # # the given search, or nil.
-  # def self.search(name)
-  #   matches = all.select do |c|
-  #     c.label == name
-  #   end
-  #   return matches
-  # end
-  #
-  # # Return either the first (probably only) channel matching
-  # # the given ID, or nil.
-  # def self.by_id(id)
-  # end
 end
-
-#
-# @label = label
-# @image = options[:image]
-# @uri = options[:uri]
-# @ingredient_lines = options[:ingredientLines]
-# @total_nutrients = options[:totalNutrients]
-# @original_recipe = options[:url]

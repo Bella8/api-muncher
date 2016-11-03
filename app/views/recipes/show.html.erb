@@ -1,7 +1,16 @@
-<section>
-  <ul>
-    <%= @item.label %>
-    <li><%= image_tag item.image %></li>
-    <li><%# item.ingredientLines.map do |i| %></li>
-  </ul>
-</section>
+<div class="row">
+        <div class="medium-6 medium-centered">
+<ul>
+   <li><%= image_tag @recipe[0]["image"]  %></li>
+     <li><%= @recipe[0]["label"]%></li>
+     <li><%=link_to "Original Recipi", @recipe[0]["url"]%></li>
+     <li><h4>ingredients</h4></li>
+     <% @recipe[0]["ingredientLines"].each do |r|%>
+     <li><%= r %></li>
+     <% end  %>
+
+     <h2>Total Nutrients</h2>
+     <li><%= @recipe[0]["totalNutrients"]["ENERC_KCAL"]["label"] %></li>
+</ul>
+</div>
+</div>

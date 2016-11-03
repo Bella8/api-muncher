@@ -6,39 +6,30 @@ class RecipeApiWrapper
 
   def self.listrecipes(search)
     @search = search
-    #? means there is going to be parameters
-    # url = BASE_URL + "search?app_id=#{APP_ID}" + "&app_key=#{APP_KEY}"
-    url = BASE_URL + "search?q=#{search}"+ "&app_id=#{APP_ID}" + "&app_key=#{APP_KEY}"
+    #? means there is going to be parameters & before paramater
+    url = BASE_URL + "search?" + "&q=#{search}"+ "&app_id=#{APP_ID}" + "&app_key=#{APP_KEY}"
     data = HTTParty.get(url)
 
     my_recipes = []
     if data["hits"]
       data["hits"].map do |hit|
-        # @uri = hit["recipe"]["uri"],
         recipe_hash = {
           label: hit["recipe"]["label"],
           image: hit["recipe"]["image"],
           uri: hit["recipe"]["uri"],
           ingredientLines: hit["recipe"]["ingredientLines"],
           totalNutrients: hit["recipe"]["totalNutrients"],
-          url: hit["recipe"]["url"],}
-          # wrapper = Recipe.new( label, recipe_hash)
+          url: hit["recipe"]["url"]}
           wrapper = Recipe.new(recipe_hash)
           my_recipes << wrapper
-        end
-      end
+       end
+    end
       return my_recipes
     end
-    #
-    # def self.recipe_url
-    #   url = BASE_URL + "-#{@uri}" + "/#{@search}"
-    #  end
-    # end
 
-
-    # def self.show_recipe
-    #   RecipeApiWrapper.listrecipes()
-    #
-    #   response_data = HTTParty.get(url)
-    #
+    def self.get_recipe(uri)
+      url = BASE_URL + "search?" + "r=#{URI.encode(uri)}"
+      recipe = HTTParty.get(url)
+      return recipe
+    end
   end
