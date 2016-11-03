@@ -1,16 +1,32 @@
 <div class="row">
-        <div class="medium-6 medium-centered">
-<ul>
-   <li><%= image_tag @recipe[0]["image"]  %></li>
-     <li><%= @recipe[0]["label"]%></li>
-     <li><%=link_to "Original Recipi", @recipe[0]["url"]%></li>
-     <li><h4>ingredients</h4></li>
-     <% @recipe[0]["ingredientLines"].each do |r|%>
-     <li><%= r %></li>
-     <% end  %>
+   <div class="medium-6 medium-centered">
+      <ul>
+         <li><%= image_tag @recipe[0]["image"]  %></li>
+         <li><%= @recipe[0]["label"]%></li>
+         <li>Source: <%=link_to @recipe[0]["source"], @recipe[0]["url"]%></li>
+         <li><h4>ingredients</h4></li>
+      </ul>
 
-     <h2>Total Nutrients</h2>
-     <li><%= @recipe[0]["totalNutrients"]["ENERC_KCAL"]["label"] %></li>
-</ul>
-</div>
+      <ul>
+         <% @recipe[0]["ingredientLines"].each do |r|%>
+         <li><%= r %></li>
+         <% end  %>
+      </ul>
+
+      <ul>
+         <% if @recipe[0]["calories"] != nil %>
+         <h4>Calories</h4>
+         <li><%= @recipe[0]["calories"] %></li>
+          <% end  %>
+      </ul>
+
+      <ul>
+      <% if @recipe[0]["healthLabels"] != nil %>
+         <h4>Health Labels</h4>
+         <% @recipe[0]["healthLabels"].each do |h|%>
+         <li><%= h %></li>
+         <% end  %>
+        <% end  %>
+      </ul>
+   </div>
 </div>

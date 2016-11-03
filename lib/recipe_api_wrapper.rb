@@ -19,17 +19,21 @@ class RecipeApiWrapper
           uri: hit["recipe"]["uri"],
           ingredientLines: hit["recipe"]["ingredientLines"],
           totalNutrients: hit["recipe"]["totalNutrients"],
-          url: hit["recipe"]["url"]}
-          wrapper = Recipe.new(recipe_hash)
-          my_recipes << wrapper
-       end
+          url: hit["recipe"]["url"],
+          calories: hit["recipe"]["calories"],
+          healthLabels: hit["recipe"][:healthLabels],
+          source: hit["recipe"]["source"]
+        }
+        wrapper = Recipe.new(recipe_hash)
+        my_recipes << wrapper
+      end
     end
-      return my_recipes
-    end
-
-    def self.get_recipe(uri)
-      url = BASE_URL + "search?" + "r=#{URI.encode(uri)}"
-      recipe = HTTParty.get(url)
-      return recipe
-    end
+    return my_recipes
   end
+
+  def self.get_recipe(uri)
+    url = BASE_URL + "search?" + "r=#{URI.encode(uri)}"
+    recipe = HTTParty.get(url)
+    return recipe
+  end
+end

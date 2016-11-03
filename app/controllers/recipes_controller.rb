@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def search
+  def index
     @search = params[:search]
     @data = Recipe.search(@search)
   end
