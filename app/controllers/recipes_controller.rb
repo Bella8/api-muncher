@@ -9,13 +9,19 @@ class RecipesController < ApplicationController
 
   def index
     #if params page is nill return one.
+
     @page = (params[:page] || 1).to_i
     @search = params[:search]
-    if @page > 0
     from = (@page - 1) * 10
     to = from + 10
     @data = Recipe.search(@search, from, to)
-  end
+    if @data.empty?
+      flash[:notice] = "Sorry, no recipes matched your search. Please try again."
+    end
+
+    if @page < 1
+      flash[:notice] = "Sorry, there no page below one."
+    end
   end
 
   def show
