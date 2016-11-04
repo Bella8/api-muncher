@@ -4,10 +4,9 @@ class RecipeApiWrapper
   APP_ID = ENV["APP_ID"]
   APP_KEY =ENV["APP_KEY"]
 
-  def self.listrecipes(search)
-    @search = search
+  def self.listrecipes(search, from, to)
     #? means there is going to be parameters & before paramater
-    url = BASE_URL + "search?" + "&q=#{search}"+ "&app_id=#{APP_ID}" + "&app_key=#{APP_KEY}"
+    url = BASE_URL + "search?" + "&q=#{search}" + "&from=#{from}" + "&to=#{to}" + "&app_id=#{APP_ID}" + "&app_key=#{APP_KEY}"
     data = HTTParty.get(url)
 
     my_recipes = []

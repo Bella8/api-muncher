@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'recipes#search_home'
+  root 'recipes#home'
   get '/recipes/:search' => 'recipes#index', as: 'recipes_search'
   get '/recipe/*uri' => 'recipes#show', format:false, as: 'recipe'
 

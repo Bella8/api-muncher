@@ -15,8 +15,7 @@ class Recipe
     @source = source
   end
 
-  def self.search(search)
-    @search = search
-    RecipeApiWrapper.listrecipes(@search)
+  def self.search(search, from, to)
+    RecipeApiWrapper.listrecipes(search, from, to)
   end
 end

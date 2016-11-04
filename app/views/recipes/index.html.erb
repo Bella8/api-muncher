@@ -9,4 +9,6 @@
     </div>
     <% end %>
   </div>
+  <%= link_to "Back", recipes_search_path(search: params[:search], page: @page -1) %>
+  <%= link_to "Next", recipes_search_path(search: params[:search], page: @page +1) %>
 </section>
