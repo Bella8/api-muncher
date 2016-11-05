@@ -9,7 +9,6 @@ class RecipesController < ApplicationController
 
   def index
     #if params page is nill return one.
-
     @page = (params[:page] || 1).to_i
     @search = params[:search]
     from = (@page - 1) * 10
@@ -21,8 +20,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @params = params[:uri]
-    @recipe = RecipeApiWrapper.get_recipe(@params)
-
+    id = params[:id]
+    @recipe = RecipeApiWrapper.get_recipe(id)
   end
 end

@@ -33,8 +33,9 @@ class RecipeApiWrapper
 # def self.count
 
 
-  def self.get_recipe(uri)
-    url = BASE_URL + "search?" + "r=#{URI.encode(uri)}"
+  def self.get_recipe(id)
+    recipe_uri = "http://www.edamam.com/ontologies/edamam.owl#recipe_#{id}"
+    url = BASE_URL + "search?" + "r=#{URI.encode(recipe_uri)}"
     recipe = HTTParty.get(url)
     return recipe
   end

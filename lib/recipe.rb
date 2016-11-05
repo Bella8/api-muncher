@@ -3,7 +3,6 @@ class Recipe
 
   # def initialize(label, options = {} )
   def initialize( recipe_hash)
-    # Soure_key, URI, label
     @label = recipe_hash[:label]
     @image = recipe_hash[:image]
     @uri = recipe_hash[:uri]

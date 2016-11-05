@@ -32,13 +32,13 @@
       <ul>
         <% if !(@recipe[0]["calories"] == nil) %>
         <h6>CALORIES</h6>
-        <small><%= @recipe[0]["calories"] %></small>
+        <small><%= @recipe[0]["calories"].to_i %></small>
         <% end %>
         <br> <br>
         <h6>HEALTH LABELS</h6>
         <% if !(@recipe[0]["healthLabels"].empty?) %>
         <% @recipe[0]["healthLabels"].each do |health_labels|%>
-        <small><%= health_labels %>,</small>
+        <small><li><%= health_labels %></li></small>
         <% end  %>
         <% else %>
         <li>Sorry no health information was provided for this recipe.</li>

@@ -7,7 +7,7 @@
     <% @data.map do |item| %>
     <div class="column">
       <ul>
-        <li><%= link_to image_tag(item.image), recipe_path(item.uri) %></li>
+        <li><%= link_to image_tag(item.image), recipe_path(parse(item.uri)) %></li>
         <li><%= link_to item.label, recipe_path(item.uri) %></li>
       </ul>
     </div>
