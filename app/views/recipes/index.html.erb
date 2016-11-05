@@ -1,6 +1,9 @@
 <section>
   <div class="row small-up-2  medium-up-2 medium-centered large-up-4">
+    <% if flash[:notice] %>
     <h3><%= flash[:notice] %></h3>
+    <%= link_to "Home", root_path %>
+    <% end  %>
     <% @data.map do |item| %>
     <div class="column">
       <ul>
@@ -10,7 +13,7 @@
     </div>
     <% end %>
   </div>
-  <% if @page >=1 %>
+  <% if !(@data.empty?) %>
   <%= link_to "Back", recipes_search_path(search: params[:search], page: @page -1) %>
   <%= link_to "Next", recipes_search_path(search: params[:search], page: @page +1) %>
   <%end %>

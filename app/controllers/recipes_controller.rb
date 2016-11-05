@@ -16,11 +16,7 @@ class RecipesController < ApplicationController
     to = from + 10
     @data = Recipe.search(@search, from, to)
     if @data.empty?
-      flash[:notice] = "Sorry, no recipes matched your search. Please try again."
-    end
-
-    if @page < 1
-      flash[:notice] = "Sorry, there no page below one."
+      flash.now[:notice] = "Sorry, no recipes to show."
     end
   end
 

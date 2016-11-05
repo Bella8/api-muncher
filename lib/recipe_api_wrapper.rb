@@ -30,6 +30,9 @@ class RecipeApiWrapper
     return my_recipes
   end
 
+# def self.count
+
+
   def self.get_recipe(uri)
     url = BASE_URL + "search?" + "r=#{URI.encode(uri)}"
     recipe = HTTParty.get(url)

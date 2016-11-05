@@ -42,7 +42,10 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'better_errors'
   gem 'minitest-vcr'
+  gem 'webmock'
 end
+
+gem 'simplecov', :require => false, :group => :test
 
 group :development do
   gem "better_errors"

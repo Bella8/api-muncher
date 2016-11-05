@@ -11,7 +11,14 @@ VCR.configure do |config|
     :record => :new_episodes,    # record new data when we don't have it yet
     :match_requests_on => [:method, :uri, :body] # The http method, URI and body of a request all need to match
   }
-end
+config.filter_sensitive_data("<APP_ID>") do
+   ENV['APP_ID']
+ end
+ config.filter_sensitive_data("<APP_KEY>") do
+   ENV['APP_KEY']
+ end
+ end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
