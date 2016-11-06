@@ -22,7 +22,9 @@
       </nav>
     </header>
 
-
+    <% if flash.now[:notice] %>
+    <h3><%= flash.now[:notice] %></h3>
+    <% end  %>
 
 <%= yield %>
 

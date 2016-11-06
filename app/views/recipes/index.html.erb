@@ -1,10 +1,6 @@
 <section>
   <div class="row small-up-2  medium-up-2 medium-centered large-up-4">
-    <% if flash[:notice] %>
-    <h3><%= flash[:notice] %></h3>
-    <% end  %>
-
-    <% @data[0].map do |item| %>
+<% @data[0].map do |item| %>
     <div class="column">
       <ul>
         <li><%= link_to image_tag(item.image), recipe_path(parse(item.uri)) %></li>

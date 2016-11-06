@@ -25,7 +25,13 @@ class RecipesController < ApplicationController
   end
 
   def show
+    name = params[:search]
     id = params[:id]
     @recipe = Recipe.get_recipe_id(id)
+
+    if (@recipe.empty?)
+      flash[:notice] = "Sorry, can't find a recipe with that id."
+      redirect_to root_path
+    end
   end
 end
