@@ -16,12 +16,12 @@ class Recipe
 
   #why are repeating the same method.
   def self.search(search, from, to)
-  @data =  RecipeApiWrapper.listrecipes(search, from, to)
+    @data =  EdamamApiWrapper.listrecipes(search, from, to)
 
-   return @data
+    return @data
   end
 
   def self.get_recipe_id(id)
-   data = RecipeApiWrapper.get_recipe(id)
+    data = EdamamApiWrapper.get_recipe(id)
   end
 end

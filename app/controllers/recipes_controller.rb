@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
     @recipe = @data[0]
     @count = @data[1]
     @end = @count <= to || @page == 10
+
     if @recipe.empty?
       flash.now[:notice] = "Sorry, no recipes to show."
     end

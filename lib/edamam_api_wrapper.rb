@@ -1,5 +1,5 @@
 require 'httparty'
-class RecipeApiWrapper
+class EdamamApiWrapper
   BASE_URL = "https://api.edamam.com/"
   APP_ID = ENV["APP_ID"]
   APP_KEY =ENV["APP_KEY"]
@@ -31,9 +31,7 @@ class RecipeApiWrapper
     return my_recipes, count
   end
 
-# def self.count
-
-
+  # def self.count
   def self.get_recipe(id)
     recipe_uri = "http://www.edamam.com/ontologies/edamam.owl#recipe_#{id}"
     url = BASE_URL + "search?" + "r=#{URI.encode(recipe_uri)}"
