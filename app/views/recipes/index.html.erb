@@ -2,9 +2,9 @@
   <div class="row small-up-2  medium-up-2 medium-centered large-up-4">
     <% if flash[:notice] %>
     <h3><%= flash[:notice] %></h3>
-    <%= link_to "Home", root_path %>
     <% end  %>
-    <% @data.map do |item| %>
+
+    <% @data[0].map do |item| %>
     <div class="column">
       <ul>
         <li><%= link_to image_tag(item.image), recipe_path(parse(item.uri)) %></li>
@@ -13,7 +13,11 @@
     </div>
     <% end %>
   </div>
-  <% if !(@data.empty?) %>
+  <% if (@end && !(@page == 1)) %>
+  <%= link_to "Back", recipes_search_path(search: params[:search], page: @page -1) %>
+  <% elsif ((@page == 1) && !(@data.empty?) && !@end) %>
+  <%= link_to "Next", recipes_search_path(search: params[:search], page: @page +1) %>
+  <% elsif !(@data.empty?) &&  !(@end) %>
   <%= link_to "Back", recipes_search_path(search: params[:search], page: @page -1) %>
   <%= link_to "Next", recipes_search_path(search: params[:search], page: @page +1) %>
   <%end %>

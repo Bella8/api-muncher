@@ -1,5 +1,5 @@
 class Recipe
-  attr_reader :label, :image, :uri, :ingredientLines, :totalNutrients, :url, :calories, :healthLabels, :source
+  attr_reader :label, :image, :uri, :ingredientLines, :totalNutrients, :url, :calories, :healthLabels, :count, :source
 
   # def initialize(label, options = {} )
   def initialize( recipe_hash)
@@ -9,12 +9,19 @@ class Recipe
     @ingredient_lines = recipe_hash[:ingredientLines]
     @total_nutrients = recipe_hash[:totalNutrients]
     @original_recipe = recipe_hash[:url]
-    @calories = calories
-    @healthLabels = healthLabels
-    @source = source
+    @calories = recipe_hash[:calories]
+    @healthLabels = recipe_hash[:healthLabels]
+    @source = recipe_hash[:source]
   end
 
+  #why are repeating the same method.
   def self.search(search, from, to)
-    RecipeApiWrapper.listrecipes(search, from, to)
+  @data =  RecipeApiWrapper.listrecipes(search, from, to)
+
+   return @data
+  end
+
+  def self.get_recipe_id(id)
+   data = RecipeApiWrapper.get_recipe(id)
   end
 end

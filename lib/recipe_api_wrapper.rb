@@ -11,6 +11,7 @@ class RecipeApiWrapper
 
     my_recipes = []
     if data["hits"]
+      count = data["count"]
       data["hits"].map do |hit|
         recipe_hash = {
           label: hit["recipe"]["label"],
@@ -27,7 +28,7 @@ class RecipeApiWrapper
         my_recipes << wrapper
       end
     end
-    return my_recipes
+    return my_recipes, count
   end
 
 # def self.count
